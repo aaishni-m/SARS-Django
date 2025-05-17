@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Patient</title>
+</head>
+<body>
+    <form method="POST">
+        {% csrf_token %}
+        <input type="text" name="name" placeholder="Name" required>
+        <input type="number" name="age" placeholder="Age" required>
+        <select name="gender" required>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+        </select>
+        <input type="text" name="contact" placeholder="Contact" required>
+        <input type="email" name="email" placeholder="Email" required>
+        <!-- Add other symptom fields here -->
+        <button type="submit">Add Patient</button>
+    </form>
+    
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Management System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .nav-link {
+            display: block;
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            text-align: center;
+            border-radius: 5px;
+        }
+        .nav-link:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to the Patient Management System</h1>
+    <p>Please select an option below:</p>
+    <a href="{% url 'patient_list' %}" class="nav-link">View All Patients</a>
+    <a href="{% url 'add_patient' %}" class="nav-link">Add a New Patient</a>
+</body>
+</html>
