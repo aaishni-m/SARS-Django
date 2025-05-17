@@ -27,4 +27,4 @@ class Patient(models.Model):
     oxygen_level = models.FloatField()
 
     def __str__(self):
-        return self.name
+        return f"name: {self.name}"

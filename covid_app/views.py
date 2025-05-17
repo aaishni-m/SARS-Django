@@ -56,7 +56,7 @@ def predict(request):
         else:
             result = "No file uploaded. Please upload an image file."
 
-    return render(request, 'result.html', {'result': result})
+    return render(request, 'index.html', {'result': result})
 
 # Patient management views
 
