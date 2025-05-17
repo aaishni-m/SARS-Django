@@ -28,3 +28,9 @@ urlpatterns = [
     path('delete/<int:patient_id>/', views.delete_patient, name='delete_patient'),
     path('list/', views.patient_list, name='patient_list'), 
 ]
+
+from django.conf import settings
+from django.conf.urls.static import static
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+

@@ -6,33 +6,25 @@ class Patient(models.Model):
         ('female', 'Female'),
         ('other', 'Other'),
     ]
-    SEVERITY_CHOICES = [
-        ('Mild', 'Mild'),
-        ('Moderate', 'Moderate'),
-        ('Severe', 'Severe'),
-    ]
-    BOOLEAN_CHOICES = [
-        ('yes', 'Yes'),
-        ('no', 'No'),
-    ]
-
-    name = models.CharField(max_length=100)
+    name = models.CharField(max_length=255)
     age = models.PositiveIntegerField()
     gender = models.CharField(max_length=10, choices=GENDER_CHOICES)
     contact = models.CharField(max_length=15)
     email = models.EmailField(unique=True)
-    fever = models.CharField(max_length=3, choices=BOOLEAN_CHOICES)
-    tiredness = models.CharField(max_length=3, choices=BOOLEAN_CHOICES)
-    dry_cough = models.CharField(max_length=3, choices=BOOLEAN_CHOICES)
-    difficulty_breathing = models.CharField(max_length=3, choices=BOOLEAN_CHOICES)
-    sore_throat = models.CharField(max_length=3, choices=BOOLEAN_CHOICES)
-    no_other_symptoms = models.CharField(max_length=3, choices=BOOLEAN_CHOICES)
-    body_pain = models.CharField(max_length=3, choices=BOOLEAN_CHOICES)
-    nasal_congestion = models.CharField(max_length=3, choices=BOOLEAN_CHOICES)
-    runny_nose = models.CharField(max_length=3, choices=BOOLEAN_CHOICES)
-    diarrhea = models.CharField(max_length=3, choices=BOOLEAN_CHOICES)
-    severity = models.CharField(max_length=10, choices=SEVERITY_CHOICES)
+    
+    fever = models.BooleanField()
+    tiredness = models.BooleanField()
+    dry_cough = models.BooleanField()
+    difficulty_breathing = models.BooleanField()
+    sore_throat = models.BooleanField()
+    # no_other_symptoms = models.BooleanField()
+    body_pain = models.BooleanField()
+    nasal_congestion = models.BooleanField()
+    runny_nose = models.BooleanField()
+    diarrhea = models.BooleanField()
+    
+    severity = models.PositiveSmallIntegerField(choices=[(1, 'Mild'), (2, 'Moderate'), (3, 'Severe')])
     oxygen_level = models.FloatField()
 
     def __str__(self):
-        return f"{self.name} ({self.email})"
+        return self.name

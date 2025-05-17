@@ -83,6 +83,22 @@
       background: rgba(255, 255, 255, 0.1);
     }
 
+    .home-link {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 1.2rem;
+    text-decoration: none;
+    color: #00c9a7;
+    font-weight: bold;
+    transition: color 0.3s ease;
+  }
+
+    .home-link:hover {
+      color: #00b395;
+    }
+
+
     input[type="submit"] {
       background: #00c9a7;
       color: white;
@@ -163,6 +179,7 @@
   </style>
 </head>
 <body>
+  <p><a href="{% url 'home' %}" class="home-link">🏠 Home</a></p>
   <div class="container">
     <h1>🧬 Covid CT Scan Checker</h1>
     <p>Upload your details and CT scan image to analyze for COVID patterns.</p>
@@ -200,7 +217,7 @@
         <label><input type="checkbox" name="symptoms" value="nasal_congestion" /> Nasal Congestion</label>
         <label><input type="checkbox" name="symptoms" value="runny_nose" /> Runny Nose</label>
         <label><input type="checkbox" name="symptoms" value="diarrhea" /> Diarrhea</label>
-        <label><input type="checkbox" name="symptoms" value="no_other_symptoms" /> No Symptoms</label>
+        <!-- <label><input type="checkbox" name="symptoms" value="no_other_symptoms" /> No Symptoms</label> -->
       </div>
       <!-- Symptom counter -->
       <p id="symptomCount" style="margin-top:10px; font-weight:bold; color:#00c9a7;">Symptoms selected: 0</p>
