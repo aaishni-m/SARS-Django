@@ -6,6 +6,10 @@
     <title>Document</title>
 </head>
 <body>
+    <h2>Welcome, {{ user.name }}</h2>
+    <p>Email: {{ user.email }}</p>
+    <a href="{% url 'logout' %}">Log Out</a>
+
     <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_p }}

@@ -171,38 +171,6 @@
       animation: spin 1s linear infinite;
     }
 
-    .box {
-  height: 45px;
-  width: 220px;
-  background-color: #000c1346;
-  border-radius: 30px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: background-color 0.3s ease;
-  margin: 0 auto;
-}
-
-.box:hover {
-  background-color: #00c9a7cc;
-  cursor: pointer;
-  box-shadow: 0 0 12px #00c9a7;
-}
-
-.btn {
-  text-decoration: none;
-  color: #00c9a7;
-  font-weight: 700;
-  font-size: 1.1rem;
-  letter-spacing: 1px;
-  transition: color 0.3s ease;
-}
-
-.box:hover .btn {
-  color: #fff;
-}
-
-
     @keyframes spin {
       to {
         transform: rotate(360deg);
@@ -213,20 +181,62 @@
 <body>
   <p><a href="{% url 'home' %}" class="home-link">🏠 Home</a></p>
   <div class="container">
-    <h1>🧬 Welcome to Covid CT Scan Checker!</h1>
-    <center>
-        <div class="box">
-          <a href="{% url 'signup' %}" class="btn">Sign up</a>
-        </div>
-      </center>
-      <br><br>
-      <center>
-        <div class="box">
-          <a href="{% url 'login' %}" class="btn">Log in</a>
-        </div>
-      </center>
-      
-    </div>
-
+    <h1>🧬 Covid CT Scan Checker</h1>
+    <form method="post">
+        {% csrf_token %}
+        <h2>Update Patient Symptoms and Details</h2>
+        
+        <!-- Symptoms -->
+        <fieldset>
+            <legend>Symptoms</legend>
+            <label for="fever">Fever:</label>
+            <input type="checkbox" name="fever" id="fever">
+    
+            <label for="tiredness">Tiredness:</label>
+            <input type="checkbox" name="tiredness" id="tiredness">
+    
+            <label for="dry_cough">Dry Cough:</label>
+            <input type="checkbox" name="dry_cough" id="dry_cough">
+    
+            <label for="difficulty_breathing">Difficulty Breathing:</label>
+            <input type="checkbox" name="difficulty_breathing" id="difficulty_breathing">
+    
+            <label for="sore_throat">Sore Throat:</label>
+            <input type="checkbox" name="sore_throat" id="sore_throat">
+    
+            <label for="body_pain">Body Pain:</label>
+            <input type="checkbox" name="body_pain" id="body_pain">
+    
+            <label for="nasal_congestion">Nasal Congestion:</label>
+            <input type="checkbox" name="nasal_congestion" id="nasal_congestion">
+    
+            <label for="runny_nose">Runny Nose:</label>
+            <input type="checkbox" name="runny_nose" id="runny_nose">
+    
+            <label for="diarrhea">Diarrhea:</label>
+            <input type="checkbox" name="diarrhea" id="diarrhea">
+        </fieldset>
+    
+        <!-- Additional Info -->
+        <fieldset>
+            <legend>Additional Information</legend>
+            <label for="severity">Severity:</label>
+            <select name="severity" id="severity">
+                <option value="1">Mild</option>
+                <option value="2">Moderate</option>
+                <option value="3">Severe</option>
+            </select>
+    
+            <label for="oxygen_level">Oxygen Level:</label>
+            <input type="number" name="oxygen_level" id="oxygen_level" step="0.1">
+        </fieldset>
+    
+        <!-- Patient Identification -->
+        <input type="hidden" name="patient_id" value="{{ patient.id }}">
+    
+        <button type="submit">Save</button>
+    </form>
+    
+    
 </body>
 </html>

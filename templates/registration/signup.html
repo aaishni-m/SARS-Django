@@ -171,38 +171,6 @@
       animation: spin 1s linear infinite;
     }
 
-    .box {
-  height: 45px;
-  width: 220px;
-  background-color: #000c1346;
-  border-radius: 30px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: background-color 0.3s ease;
-  margin: 0 auto;
-}
-
-.box:hover {
-  background-color: #00c9a7cc;
-  cursor: pointer;
-  box-shadow: 0 0 12px #00c9a7;
-}
-
-.btn {
-  text-decoration: none;
-  color: #00c9a7;
-  font-weight: 700;
-  font-size: 1.1rem;
-  letter-spacing: 1px;
-  transition: color 0.3s ease;
-}
-
-.box:hover .btn {
-  color: #fff;
-}
-
-
     @keyframes spin {
       to {
         transform: rotate(360deg);
@@ -213,20 +181,45 @@
 <body>
   <p><a href="{% url 'home' %}" class="home-link">🏠 Home</a></p>
   <div class="container">
-    <h1>🧬 Welcome to Covid CT Scan Checker!</h1>
-    <center>
-        <div class="box">
-          <a href="{% url 'signup' %}" class="btn">Sign up</a>
-        </div>
-      </center>
-      <br><br>
-      <center>
-        <div class="box">
-          <a href="{% url 'login' %}" class="btn">Log in</a>
-        </div>
-      </center>
-      
-    </div>
+    <h1>🧬 Covid CT Scan Checker</h1>
+    <h2>Sign Up</h2>
+    {% if messages %}
+  <ul class="messages">
+    {% for message in messages %}
+      <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+        {{ message }}
+      </li>
+    {% endfor %}
+  </ul>
+{% endif %}
 
+    <form method="post">
+        {% csrf_token %}
+        <label for="username">Username:</label>
+        <input type="text" name="username" required>
+        
+        <label for="email">Email:</label>
+        <input type="email" name="email" required>
+    
+        <label for="password">Password:</label>
+        <input type="password" name="password" required>
+
+        <label for="age">Age:</label>
+        <input type="number" name="age" required>
+    
+        <label for="gender">Gender:</label>
+        <select name="gender">
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+        </select>
+    
+        <label for="phone_number">Phone Number:</label>
+        <input type="text" name="phone_number" required>
+    
+        <button type="submit">Sign Up</button>
+    </form>
+    
+</form>
 </body>
 </html>

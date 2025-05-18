@@ -171,38 +171,6 @@
       animation: spin 1s linear infinite;
     }
 
-    .box {
-  height: 45px;
-  width: 220px;
-  background-color: #000c1346;
-  border-radius: 30px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: background-color 0.3s ease;
-  margin: 0 auto;
-}
-
-.box:hover {
-  background-color: #00c9a7cc;
-  cursor: pointer;
-  box-shadow: 0 0 12px #00c9a7;
-}
-
-.btn {
-  text-decoration: none;
-  color: #00c9a7;
-  font-weight: 700;
-  font-size: 1.1rem;
-  letter-spacing: 1px;
-  transition: color 0.3s ease;
-}
-
-.box:hover .btn {
-  color: #fff;
-}
-
-
     @keyframes spin {
       to {
         transform: rotate(360deg);
@@ -213,20 +181,46 @@
 <body>
   <p><a href="{% url 'home' %}" class="home-link">🏠 Home</a></p>
   <div class="container">
-    <h1>🧬 Welcome to Covid CT Scan Checker!</h1>
-    <center>
-        <div class="box">
-          <a href="{% url 'signup' %}" class="btn">Sign up</a>
-        </div>
-      </center>
-      <br><br>
-      <center>
-        <div class="box">
-          <a href="{% url 'login' %}" class="btn">Log in</a>
-        </div>
-      </center>
-      
-    </div>
+    <h1>🧬 Covid CT Scan Checker</h1>
+    <h1>Welcome, {{ user.username }}</h1>
 
+<!-- Patient Details -->
+<section>
+<section>
+  <h2>Basic Info</h2>
+  <p><strong>Name:</strong> {{patient.name}}</p>
+  <p><strong>Age:</strong> {{ patient.age }}</p>
+  <p><strong>Gender:</strong> {{ patient.gender }}</p>
+  <p><strong>Contact:</strong> {{ patient.contact }}</p>
+  <p><strong>Email:</strong> {{ patient.email }}</p>
+</section>
+
+<section>
+  <h2>Symptoms</h2>
+  <ul>
+    <li>Fever: {{ patient.fever|yesno:"Yes,No" }}</li>
+    <li>Tiredness: {{ patient.tiredness|yesno:"Yes,No" }}</li>
+    <li>Dry Cough: {{ patient.dry_cough|yesno:"Yes,No" }}</li>
+    <li>Difficulty Breathing: {{ patient.difficulty_breathing|yesno:"Yes,No" }}</li>
+    <li>Sore Throat: {{ patient.sore_throat|yesno:"Yes,No" }}</li>
+    <li>Body Pain: {{ patient.body_pain|yesno:"Yes,No" }}</li>
+    <li>Nasal Congestion: {{ patient.nasal_congestion|yesno:"Yes,No" }}</li>
+    <li>Runny Nose: {{ patient.runny_nose|yesno:"Yes,No" }}</li>
+    <li>Diarrhea: {{ patient.diarrhea|yesno:"Yes,No" }}</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Additional Info</h2>
+  <p><strong>Severity:</strong>
+    {% if patient.severity == 1 %}Mild
+    {% elif patient.severity == 2 %}Moderate
+    {% else %}Severe{% endif %}
+  </p>
+  <p><strong>Oxygen Level:</strong> {{ patient.oxygen_level }}%</p>
+</section>
+
+</section>
+    
 </body>
 </html>
